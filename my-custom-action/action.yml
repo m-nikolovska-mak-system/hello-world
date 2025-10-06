@@ -1,0 +1,11 @@
+# my-custom-action/action.yml
+name: 'Greet User'
+description: 'Prints a greeting'
+inputs:
+  name:
+    required: true
+    description: 'Name of the user'
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "Hello, ${{ inputs.name }}!"

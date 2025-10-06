@@ -1,4 +1,3 @@
-# my-custom-action/action.yml
 name: 'Greet User'
 description: 'Prints a greeting'
 inputs:
@@ -9,3 +8,4 @@ runs:
   using: 'composite'
   steps:
     - run: echo "Hello, ${{ inputs.name }}!"
+      shell: bash

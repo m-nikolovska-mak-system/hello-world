@@ -14,3 +14,12 @@ jobs:
           title: "✅ CI workflow completed successfully!"
           text: "This test WF is complete!"
           theme-color: "00FF00"
+  greet:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Greet User
+        uses: ./my-custom-action
+        with:
+          name: 'Mihaela'

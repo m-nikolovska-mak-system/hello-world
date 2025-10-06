@@ -9,6 +9,6 @@ jobs:
       - name: Notify Teams
         uses: LuisGhz/simple-ms-teams-webhook-notifier@v1.2.0
         with:
-          webhook-url: ${{ secrets.TEAMS_WEBHOOK }}
+          webhook_url: ${{ secrets.TEAMS_WEBHOOK }}
           message: "✅ CI workflow completed successfully!"
           color: "00FF00"

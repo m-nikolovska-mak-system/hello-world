@@ -1,0 +1,40 @@
+name: Build JAR from Java
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # or '11', '21', etc.
+
+      - name: Compile Java
+        run: |
+          mkdir -p out
+          javac -d out src/App.java
+
+      - name: Create Manifest
+        run: |
+          echo "Main-Class: App" > out/MANIFEST.MF
+
+      - name: Package JAR
+        run: |
+          cd out
+          jar cfm App.jar MANIFEST.MF *.class
+
+      - name: Upload JAR Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-jar
+          path: out/App.jar

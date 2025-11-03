@@ -22,17 +22,17 @@ jobs:
       - name: Compile Java
         run: |
           mkdir -p out
-          javac -d out src/App.java
-
+          javac -d out oneProjectWed/src/java/com/miha/app/App.java
+      
       - name: Create Manifest
         run: |
-          echo "Main-Class: App" > out/MANIFEST.MF
-
+          echo "Main-Class: com.miha.app.App" > out/MANIFEST.MF
+      
       - name: Package JAR
         run: |
           cd out
-          jar cfm App.jar MANIFEST.MF *.class
-
+          jar cfm App.jar MANIFEST.MF com/miha/app/*.class
+          
       - name: Upload JAR Artifact
         uses: actions/upload-artifact@v3
         with:
